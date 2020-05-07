@@ -1,11 +1,9 @@
 {
-  "name": "gatsby-starter-default",
-  "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "name": "jest-typescript-gatsby-starter",
+  "description": "An all-in-one jump start to your gatsby project",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Stephen Mccarrick <smccarrick2804@gmal.com>",
   "dependencies": {
-    "@types/react-helmet": "^5.0.11",
     "gatsby": "^2.15.28",
     "gatsby-image": "^2.2.23",
     "gatsby-plugin-manifest": "^2.2.20",
@@ -20,37 +18,108 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.0.2",
+    "@testing-library/react": "^9.4.0",
+    "@types/jest": "^25.1.1",
+    "@types/jest-axe": "^3.2.1",
+    "@types/node": "^13.5.3",
+    "@types/react": "^16.9.16",
+    "@types/react-helmet": "^5.0.11",
     "@typescript-eslint/eslint-plugin": "^2.3.1",
     "@typescript-eslint/parser": "^2.3.1",
     "eslint": "^6.4.0",
     "eslint-config-prettier": "^6.3.0",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
     "husky": "^3.0.5",
+    "jest": "^25.4.0",
+    "jest-axe": "^3.3.0",
+    "jest-watch-typeahead": "^0.5.0",
     "lint-staged": "^9.4.0",
     "prettier": "^1.18.2",
+    "sm-config": "git+ssh:git@github.com:SMccarrick/sm-config.git",
+    "ts-jest": "^25.1.0",
     "typescript": "^3.6.3"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "jest",
+    "typescript",
+    "husky",
+    "lint-staged"
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
+    "build": "gatsby build",
     "serve": "gatsby serve",
-    "type-check": "tsc",
-    "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
-    "lint:fix": "yarn lint --fix",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
+    "format": "prettier \"**/*.{md,mdx,json,yaml}\" --write",
+    "format:test": "prettier \"**/*.{md,mdx,json,yaml}\" --check",
+    "lint": "eslint .",
+    "lint:fix": "lint --fix",
+    "test:ts": "tsc",
+    "test": "jest",
+    "test:update": "jest --updateSnapshot",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "#"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "#"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.([tj]sx?)$",
+    "moduleNameMapper": {
+      ".+\\.(css|styl|less|sass|scss)$": "identity-obj-proxy",
+      ".+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/jest/__mocks__/file-mock.ts"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "testPathIgnorePatterns": [
+      "node_modules",
+      ".cache"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(gatsby)/)"
+    ],
+    "globals": {
+      "__PATH_PREFIX__": "``"
+    },
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest/setup-env.ts"
+    ],
+    "setupFiles": [
+      "<rootDir>/jest/loadershim.ts"
+    ],
+    "watchPlugins": [
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": [
+        "yarn test:ts && lint-staged"
+      ]
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix"
+    ],
+    "*.{md,mdx,json,yaml}": [
+      "prettier '**/*.{md,mdx,json,yaml}' --write"
+    ]
   }
 }
