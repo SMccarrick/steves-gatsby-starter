@@ -1,7 +1,11 @@
 import { Link } from 'gatsby';
 import React from 'react';
 
-const Welcome = ({ siteAuthor = `` }) => (
+interface WelcomeProps {
+  siteAuthor: string;
+}
+
+const Welcome: React.FC<WelcomeProps> = ({ siteAuthor = `` }) => (
   <div>
     <h1>
       <Link to="/">{siteAuthor}</Link>

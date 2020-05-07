@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Header = () => (
+const Header: React.FC<{}> = () => (
   <header>
     <div>
       <h3>Follow my Journey</h3>

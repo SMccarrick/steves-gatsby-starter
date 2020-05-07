@@ -1,13 +1,9 @@
-import React, { ReactNode } from 'react';
+import React from "react";
 
-import Header from './Header';
-import './layout.css';
+import Header from "./Header";
+import "./layout.css";
 
-interface Props {
-  children: ReactNode;
-}
-
-const Layout = ({ children }: Props) => {
+const Layout: React.FC<{}> = ({ children }) => {
   return (
     <>
       <Header />
