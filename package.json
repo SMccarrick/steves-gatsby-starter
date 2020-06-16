@@ -64,10 +64,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "#"
+    "url": "https://github.com/SMccarrick/steves-gatsby-starter"
   },
   "bugs": {
-    "url": "#"
+    "url": "https://github.com/SMccarrick/steves-gatsby-starter/issues"
   },
   "jest": {
     "transform": {
