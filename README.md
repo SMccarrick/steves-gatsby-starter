@@ -24,7 +24,6 @@
 - [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro)
 - [@testing-library/jest-dom](https://testing-library.com/docs/dom-testing-library/intro)
 
-
 ## Install
 
 ```sh
@@ -41,7 +40,7 @@ yarn test
 
 👤 **Stephen Mccarrick <smccarrick2804@gmal.com>**
 
-* Github: [@SMccarrick](https://github.com/SMccarrick)
+- Github: [@SMccarrick](https://github.com/SMccarrick)
 
 ## 🤝 Contributing
 
